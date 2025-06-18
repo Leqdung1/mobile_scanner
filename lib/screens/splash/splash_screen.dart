@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/core/extensions/theme_extension.dart';
+import 'package:qr_scanner/core/style/text_style.dart';
 
 import '../../core/constants/asset_path_const.dart';
 
@@ -8,7 +10,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[700],
+      backgroundColor: const Color(0xFFFDB623),
       body: Stack(
         children: [
           // Top curve
@@ -16,28 +18,40 @@ class SplashScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: ClipPath(
-              clipper: TopCurveClipper(),
-              child: Container(height: 180, color: Colors.grey[900]),
-            ),
+            child: Image.asset(AssetPathConst.imgTopCurve),
           ),
           // Bottom curve with button
           Positioned(
             bottom: 0,
             left: 0,
             right: 0,
-            child: ClipPath(
-              clipper: BottomCurveClipper(),
-              child: Container(
-                height: 120,
-                color: Colors.grey[900],
-                child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 32, bottom: 16),
+            child: Container(
+              height: 180,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(AssetPathConst.imgBottomCurve),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 32, bottom: 16),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFFFDB623),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFFFDB623)!.withOpacity(0.3),
+                          blurRadius: 15,
+                          offset: Offset(0, 0),
+                        ),
+                      ],
+                    ),
                     child: CircleAvatar(
                       radius: 28,
-                      backgroundColor: Colors.amber[700],
+                      backgroundColor: Color(0xFFFDB623),
                       child: IconButton(
                         icon: const Icon(
                           Icons.arrow_forward,
@@ -60,21 +74,14 @@ class SplashScreen extends StatelessWidget {
               children: [
                 Image.asset(AssetPathConst.imgSplash, width: 120, height: 120),
                 const SizedBox(height: 32),
-                const Text(
-                  'Get Started',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
+                Text('Get Started', style: context.textTheme.largeTitle),
                 const SizedBox(height: 16),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32.0),
                   child: Text(
                     'Go and enjoy our features for free and make your life easy with us.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14, color: Colors.black87),
+                    style: context.textTheme.bodySmall,
                   ),
                 ),
               ],
@@ -84,42 +91,4 @@ class SplashScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-// Custom clipper for the top curve
-class TopCurveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height - 60);
-    path.quadraticBezierTo(
-      size.width * 0.5,
-      size.height,
-      size.width,
-      size.height - 60,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
-
-// Custom clipper for the bottom curve
-class BottomCurveClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.moveTo(0, 60);
-    path.quadraticBezierTo(size.width * 0.5, 0, size.width, 60);
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
