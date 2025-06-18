@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/screens/generate_qr/generate_qr_screen.dart';
+import 'package:qr_scanner/screens/history/history_screen.dart';
 import 'package:qr_scanner/screens/home/home_screen.dart';
+import 'package:qr_scanner/screens/scan_qr/scan_qr_screen.dart';
 import 'package:qr_scanner/screens/splash/splash_screen.dart';
 
 void main() {
@@ -13,14 +16,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'QR Scanner',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: '/',
+      initialRoute: '/splash',
       routes: {
-        '/': (context) => const SplashScreen(),
+        '/splash': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
+        '/scan': (context) => const ScanQrScreen(),
+        '/generate': (context) => const GenerateQrScreen(),
+        '/history': (context) => const HistoryScreen(),
       },
     );
   }

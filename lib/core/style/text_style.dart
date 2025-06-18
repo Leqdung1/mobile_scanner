@@ -16,4 +16,11 @@ extension TextThemeExt on TextTheme {
     fontFamily: _fontFamily,
     color: Color(0xFF3E3E42),
   );
+
+  TextStyle get body17 => TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+    color: Color(0xFFD9D9D9),
+  );
 }

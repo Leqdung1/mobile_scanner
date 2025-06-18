@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/core/constants/app_theme_const.dart';
 import 'package:qr_scanner/core/extensions/theme_extension.dart';
 import 'package:qr_scanner/core/style/text_style.dart';
 
@@ -10,7 +11,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFDB623),
+      backgroundColor: AppThemeConst.primaryColor,
       body: Stack(
         children: [
           // Top curve
@@ -40,10 +41,10 @@ class SplashScreen extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xFFFDB623),
+                      color: AppThemeConst.primaryColor,
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xFFFDB623)!.withOpacity(0.3),
+                          color: AppThemeConst.primaryColor.withOpacity(0.3),
                           blurRadius: 15,
                           offset: Offset(0, 0),
                         ),
@@ -51,7 +52,7 @@ class SplashScreen extends StatelessWidget {
                     ),
                     child: CircleAvatar(
                       radius: 28,
-                      backgroundColor: Color(0xFFFDB623),
+                      backgroundColor: AppThemeConst.primaryColor,
                       child: IconButton(
                         icon: const Icon(
                           Icons.arrow_forward,
