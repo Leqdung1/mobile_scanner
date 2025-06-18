@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final ValueNotifier<int> _selectedIndex = ValueNotifier(0);
+  int _selectedIndex = 0;
 
   final List<Widget> _screens = [
     GenerateQrScreen(),
@@ -21,23 +21,29 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   void _onTabSelected(int index) {
-    _selectedIndex.value = index;
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ValueListenableBuilder(
-        valueListenable: _selectedIndex,
-        builder: (context, value, child) {
-          return IndexedStack(index: value, children: _screens);
-        },
-      ),
-      bottomNavigationBar: SafeArea(
-        child: BottomBar(
-          selectedIndex: _selectedIndex.value,
-          onTabSelected: _onTabSelected,
-        ),
+      body: Stack(
+        children: [
+          IndexedStack(index: _selectedIndex, children: _screens),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: SafeArea(
+              child: BottomBar(
+                selectedIndex: _selectedIndex,
+                onTabSelected: _onTabSelected,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

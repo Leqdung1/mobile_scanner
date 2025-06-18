@@ -40,10 +40,10 @@ class BottomBar extends StatelessWidget {
             children: [
               _buildItem(AssetPathConst.icQr, 'Generate', context, () {
                 onTabSelected(0);
-              }),
+              }, selectedIndex == 0),
               _buildItem(AssetPathConst.icHistory, 'History', context, () {
                 onTabSelected(2);
-              }),
+              }, selectedIndex == 2),
             ],
           ),
         ),
@@ -83,15 +83,27 @@ class BottomBar extends StatelessWidget {
     String label,
     BuildContext context,
     VoidCallback onPressed,
+    bool isSelected,
   ) {
     return GestureDetector(
       onTap: onPressed,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(iconPath, width: 24, height: 24),
+          SvgPicture.asset(
+            iconPath,
+            width: 24,
+            height: 24,
+            color: isSelected ? AppThemeConst.primaryColor : Color(0xFFD9D9D9),
+          ),
           const SizedBox(height: 4),
-          Text(label, style: context.textTheme.body17),
+          Text(
+            label,
+            style: context.textTheme.body17.copyWith(
+              color:
+                  isSelected ? AppThemeConst.primaryColor : Color(0xFFD9D9D9),
+            ),
+          ),
         ],
       ),
     );
