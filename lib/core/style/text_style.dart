@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/core/constants/app_theme_const.dart';
 
 extension TextThemeExt on TextTheme {
   String get _fontFamily => 'Comic Neue';
@@ -21,6 +22,20 @@ extension TextThemeExt on TextTheme {
     fontSize: 17,
     fontWeight: FontWeight.w600,
     fontFamily: _fontFamily,
-    color: Color(0xFFD9D9D9),
+    color: AppThemeConst.textColor,
+  );
+
+  TextStyle get titleAppBar => TextStyle(
+    fontSize: 27,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+    color: AppThemeConst.textColor,
+  );
+
+  TextStyle get body12 => TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+    color: AppThemeConst.bgBlue,
   );
 }
