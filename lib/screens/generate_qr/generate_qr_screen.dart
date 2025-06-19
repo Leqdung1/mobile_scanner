@@ -17,6 +17,7 @@ class GenerateQrScreen extends StatelessWidget {
         title: Text('Generate QR', style: context.textTheme.titleAppBar),
       ),
       body: GridView.builder(
+        physics: NeverScrollableScrollPhysics(),
         padding: EdgeInsets.only(top: 50),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,

@@ -1,8 +1,5 @@
-
 class AssetPathConst {
-  static const String imgSplash = 'assets/images/img_splash.png';
-  static const String imgTopCurve = 'assets/images/top_curve.png';
-  static const String imgBottomCurve = 'assets/images/bottom_curve.png';
+  // ------------------ Icon ------------------ //
   static const String icQr = 'assets/icons/ic_qr.svg';
   static const String icHistory = 'assets/icons/ic_history.svg';
   static const String icQrCode = 'assets/icons/ic_qr_code.svg';
@@ -17,4 +14,12 @@ class AssetPathConst {
   static const String icIg = 'assets/icons/ic_ig.svg';
   static const String icPhone = 'assets/icons/ic_phone.svg';
   static const String icTwitter = 'assets/icons/ic_twitter.svg';
+  static const String icDelete = 'assets/icons/ic_delete.svg';
+  static const String icHistoryScan = 'assets/icons/ic_history_scan.svg';
+
+  // ------------------ Image ------------------ //
+  static const String imgSplash = 'assets/images/img_splash.png';
+  static const String imgTopCurve = 'assets/images/top_curve.png';
+  static const String imgBottomCurve = 'assets/images/bottom_curve.png';
+  static const String imgBackground = 'assets/images/img_background.png';
 }
