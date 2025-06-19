@@ -3,11 +3,14 @@ import 'package:qr_scanner/core/extensions/theme_extension.dart';
 import 'package:qr_scanner/core/style/text_style.dart';
 
 class QrCodeData extends StatelessWidget {
-  const QrCodeData({super.key});
+  const QrCodeData({super.key, required this.text});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Color(0xFF3B3B3B).withOpacity(0.78),
@@ -25,10 +28,7 @@ class QrCodeData extends StatelessWidget {
         children: [
           Text('Data', style: context.textTheme.body22),
           const SizedBox(height: 12),
-          Text(
-            'https://www.youtube.com/watch?v=Zd9g7sKvgIM',
-            style: context.textTheme.body17,
-          ),
+          Text(text, style: context.textTheme.body17),
         ],
       ),
     );

@@ -4,8 +4,21 @@ import 'package:qr_scanner/core/extensions/theme_extension.dart';
 import 'package:qr_scanner/core/style/text_style.dart';
 import 'package:qr_scanner/screens/generate_code/widgets/text_field_widget.dart';
 
-class FormGenCode extends StatelessWidget {
+class FormGenCode extends StatefulWidget {
   const FormGenCode({super.key});
+
+  @override
+  State<FormGenCode> createState() => _FormGenCodeState();
+}
+
+class _FormGenCodeState extends State<FormGenCode> {
+  final TextEditingController controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +47,7 @@ class FormGenCode extends StatelessWidget {
               child: Text('Text', style: context.textTheme.body17),
             ),
             const SizedBox(height: 8),
-            const TextFieldWidget(),
+            TextFieldWidget(controller: controller),
             const SizedBox(height: 24),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -50,7 +63,14 @@ class FormGenCode extends StatelessWidget {
                 elevation: 0,
               ),
               onPressed: () {
-                // Generate QR code logic
+                final text = controller.text.trim();
+                if (text.isNotEmpty) {
+                  Navigator.pushNamed(
+                    context,
+                    '/show_qr_code',
+                    arguments: text,
+                  );
+                }
               },
               child: Text(
                 'Generate QR Code',

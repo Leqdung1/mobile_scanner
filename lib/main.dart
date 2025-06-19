@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'QR Scanner',
-      theme: ThemeData( 
+      theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       initialRoute: '/splash',
@@ -31,7 +31,10 @@ class MyApp extends StatelessWidget {
         '/generate': (context) => const GenerateQrScreen(),
         '/history': (context) => const HistoryScreen(),
         '/result': (context) => const ResultScanScreen(),
-        '/show_qr_code': (context) => const ShowQrCodeScreen(),
+        '/show_qr_code':
+            (context) => ShowQrCodeScreen(
+              text: ModalRoute.of(context)?.settings.arguments as String,
+            ),
         '/generate_code': (context) => const GenerateCodeScreen(),
       },
     );

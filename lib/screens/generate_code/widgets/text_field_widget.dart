@@ -4,11 +4,16 @@ import 'package:qr_scanner/core/extensions/theme_extension.dart';
 import 'package:qr_scanner/core/style/text_style.dart';
 
 class TextFieldWidget extends StatelessWidget {
-  const TextFieldWidget({super.key});
+  const TextFieldWidget({super.key, required this.controller});
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      cursorColor: AppThemeConst.primaryColor,
+      style: context.textTheme.body15,
+      controller: controller,
       decoration: InputDecoration(
         hintText: 'Enter text',
         hintStyle: context.textTheme.body12.copyWith(
