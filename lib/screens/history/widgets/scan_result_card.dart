@@ -52,15 +52,8 @@ class ScanResultCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 8),
-                  Text(
-                    dateTime,
-                    style: TextStyle(
-                      color: AppThemeConst.textColor,
-                      fontFamily: 'Comic Neue',
-                      fontSize: 12,
-                    ),
-                  ),
+                  const SizedBox(height: 8),
+                  Text(dateTime, style: context.textTheme.dateTime),
                 ],
               ),
             ),

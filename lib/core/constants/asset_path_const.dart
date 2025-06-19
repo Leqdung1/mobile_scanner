@@ -16,6 +16,8 @@ class AssetPathConst {
   static const String icTwitter = 'assets/icons/ic_twitter.svg';
   static const String icDelete = 'assets/icons/ic_delete.svg';
   static const String icHistoryScan = 'assets/icons/ic_history_scan.svg';
+  static const String icCopy = 'assets/icons/ic_copy.svg';
+  static const String icShare = 'assets/icons/ic_share.svg';
 
   // ------------------ Image ------------------ //
   static const String imgSplash = 'assets/images/img_splash.png';

@@ -13,7 +13,9 @@ class ScanTab extends StatelessWidget {
             url: 'https://itunes.com',
             dateTime: '16 Dec 2022, 9:30 pm',
             onDelete: () {},
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, '/result');
+            },
           ),
     );
   }

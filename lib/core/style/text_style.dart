@@ -38,4 +38,25 @@ extension TextThemeExt on TextTheme {
     fontFamily: _fontFamily,
     color: AppThemeConst.bgBlue,
   );
+
+  TextStyle get body15 => TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+    color: AppThemeConst.textColor,
+  );
+
+  TextStyle get body22 => TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+    color: AppThemeConst.textColor,
+  );
+
+    TextStyle get dateTime => TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    fontFamily: _fontFamily,
+    color: AppThemeConst.textColor
+  );
 }
