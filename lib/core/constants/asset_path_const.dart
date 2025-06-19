@@ -18,10 +18,12 @@ class AssetPathConst {
   static const String icHistoryScan = 'assets/icons/ic_history_scan.svg';
   static const String icCopy = 'assets/icons/ic_copy.svg';
   static const String icShare = 'assets/icons/ic_share.svg';
+  static const String icSave = 'assets/icons/ic_save.svg';
 
   // ------------------ Image ------------------ //
   static const String imgSplash = 'assets/images/img_splash.png';
   static const String imgTopCurve = 'assets/images/top_curve.png';
   static const String imgBottomCurve = 'assets/images/bottom_curve.png';
   static const String imgBackground = 'assets/images/img_background.png';
+  static const String imgQrSample = 'assets/images/img_qr_sample.png';
 }

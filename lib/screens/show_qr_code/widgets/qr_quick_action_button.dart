@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:qr_scanner/core/constants/asset_path_const.dart';
-import '../../../widgets/action_button.dart';
+import 'package:qr_scanner/widgets/action_button.dart';
 
-class QuickActionButton extends StatelessWidget {
-  const QuickActionButton({super.key});
+class QrQuickActionButton extends StatelessWidget {
+  const QrQuickActionButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +19,8 @@ class QuickActionButton extends StatelessWidget {
         ),
         const SizedBox(width: 32),
         ActionButton(
-          icon: AssetPathConst.icCopy,
-          label: 'Copy',
+          icon: AssetPathConst.icSave,
+          label: 'Save',
           onTap: () {
             // Copy logic
           },

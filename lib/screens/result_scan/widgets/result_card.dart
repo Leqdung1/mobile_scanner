@@ -61,7 +61,7 @@ class ResultCard extends StatelessWidget {
             // Show QR Code link
             InkWell(
               onTap: () {
-                // Show QR code dialog or screen
+                Navigator.pushNamed(context, '/show_qr_code');
               },
               child: Center(
                 child: Text(
