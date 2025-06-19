@@ -94,14 +94,14 @@ class BottomBar extends StatelessWidget {
             iconPath,
             width: 24,
             height: 24,
-            color: isSelected ? AppThemeConst.primaryColor : Color(0xFFD9D9D9),
+            color: isSelected ? AppThemeConst.primaryColor : AppThemeConst.textColor,
           ),
           const SizedBox(height: 4),
           Text(
             label,
             style: context.textTheme.body17.copyWith(
               color:
-                  isSelected ? AppThemeConst.primaryColor : Color(0xFFD9D9D9),
+                  isSelected ? AppThemeConst.primaryColor : AppThemeConst.textColor,
             ),
           ),
         ],
