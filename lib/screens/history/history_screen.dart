@@ -19,6 +19,7 @@ class HistoryScreen extends StatelessWidget {
         child: Column(
           children: [
             AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: Colors.transparent,
               title: Text('History', style: context.textTheme.titleAppBar),
             ),

@@ -3,9 +3,12 @@ import 'package:qr_scanner/core/constants/app_theme_const.dart';
 import 'package:qr_scanner/core/extensions/theme_extension.dart';
 import 'package:qr_scanner/core/style/text_style.dart';
 import 'package:qr_scanner/screens/generate_code/widgets/text_field_widget.dart';
+import 'package:qr_scanner/core/enum/app_enum.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FormGenCode extends StatefulWidget {
-  const FormGenCode({super.key});
+  final ScanType scanType;
+  const FormGenCode({super.key, required this.scanType});
 
   @override
   State<FormGenCode> createState() => _FormGenCodeState();
@@ -40,11 +43,19 @@ class _FormGenCodeState extends State<FormGenCode> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.text_fields, color: const Color(0xFFFDB623), size: 56),
+            SvgPicture.asset(
+              widget.scanType.icon,
+              color: const Color(0xFFFDB623),
+              height: 56,
+              width: 56,
+            ),
             const SizedBox(height: 16),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text('Text', style: context.textTheme.body17),
+              child: Text(
+                widget.scanType.name,
+                style: context.textTheme.body17,
+              ),
             ),
             const SizedBox(height: 8),
             TextFieldWidget(controller: controller),

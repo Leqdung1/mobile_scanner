@@ -10,38 +10,33 @@ class GenerateQrScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
-      child: Scaffold(
-        backgroundColor: AppThemeConst.backgroundColor.withOpacity(0.84),
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: Text('Generate QR', style: context.textTheme.titleAppBar),
+    return Scaffold(
+      backgroundColor: AppThemeConst.backgroundColor.withOpacity(0.84),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        title: Text('Generate QR', style: context.textTheme.titleAppBar),
+      ),
+      body: GridView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.only(top: 50),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 1,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 5,
         ),
-        body: GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.only(top: 50),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 1,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 5,
-          ),
-          itemCount: ScanType.values.length,
-          itemBuilder: (context, index) {
-            final scanType = ScanType.values[index];
-            return _buildItem(context, scanType.name, scanType.icon, () {
-              Navigator.pushNamed(
-                context,
-                '/generate_code',
-                arguments: {'title': scanType.name},
-              );
-            });
-          },
-        ),
+        itemCount: ScanType.values.length,
+        itemBuilder: (context, index) {
+          final scanType = ScanType.values[index];
+          return _buildItem(context, scanType.name, scanType.icon, () {
+            Navigator.pushNamed(
+              context,
+              '/generate_code',
+              arguments: {'scanType': scanType},
+            );
+          });
+        },
       ),
     );
   }

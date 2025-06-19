@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:qr_scanner/screens/generate_code/widgets/form_gen_code.dart';
 import 'package:qr_scanner/screens/generate_code/widgets/gen_code_app_bar.dart';
 import 'package:qr_scanner/widgets/background_widget.dart';
+import 'package:qr_scanner/core/enum/app_enum.dart';
 
 class GenerateCodeScreen extends StatelessWidget {
-  const GenerateCodeScreen({super.key});
+  final ScanType scanType;
+  const GenerateCodeScreen({super.key, required this.scanType});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,9 @@ class GenerateCodeScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              const GenCodeAppBar(title: 'Generate Code'),
+              GenCodeAppBar(title: scanType.name),
               const SizedBox(height: 200),
-              const FormGenCode(),
+              FormGenCode(scanType: scanType),
             ],
           ),
         ),
