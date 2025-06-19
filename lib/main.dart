@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/screens/generate_code/generate_code_screen.dart';
 import 'package:qr_scanner/screens/generate_qr/generate_qr_screen.dart';
 import 'package:qr_scanner/screens/history/history_screen.dart';
 import 'package:qr_scanner/screens/home/home_screen.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/history': (context) => const HistoryScreen(),
         '/result': (context) => const ResultScanScreen(),
         '/show_qr_code': (context) => const ShowQrCodeScreen(),
+        '/generate_code': (context) => const GenerateCodeScreen(),
       },
     );
   }

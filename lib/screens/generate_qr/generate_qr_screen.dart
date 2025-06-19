@@ -10,59 +10,79 @@ class GenerateQrScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppThemeConst.backgroundColor.withOpacity(0.84),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text('Generate QR', style: context.textTheme.titleAppBar),
-      ),
-      body: GridView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.only(top: 50),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 1,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 5,
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        backgroundColor: AppThemeConst.backgroundColor.withOpacity(0.84),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Text('Generate QR', style: context.textTheme.titleAppBar),
         ),
-        itemCount: ScanType.values.length,
-        itemBuilder: (context, index) {
-          final scanType = ScanType.values[index];
-          return _buildItem(context, scanType.name, scanType.icon);
-        },
+        body: GridView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          padding: EdgeInsets.only(top: 50),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 1,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 5,
+          ),
+          itemCount: ScanType.values.length,
+          itemBuilder: (context, index) {
+            final scanType = ScanType.values[index];
+            return _buildItem(context, scanType.name, scanType.icon, () {
+              Navigator.pushNamed(
+                context,
+                '/generate_code',
+                arguments: {'title': scanType.name},
+              );
+            });
+          },
+        ),
       ),
     );
   }
 
-  Widget _buildItem(BuildContext context, String label, String icon) {
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: Alignment.topCenter,
-      children: [
-        Container(
-          height: 100,
-          width: 100,
-          decoration: BoxDecoration(
-            color: AppThemeConst.backgroundColor,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: AppThemeConst.primaryColor, width: 2),
-          ),
-          alignment: Alignment.center,
-          child: SvgPicture.asset(icon, height: 40, width: 40),
-        ),
-        Positioned(
-          top: -10,
-
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+  Widget _buildItem(
+    BuildContext context,
+    String label,
+    String icon,
+    VoidCallback onTap,
+  ) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.topCenter,
+        children: [
+          Container(
+            height: 100,
+            width: 100,
             decoration: BoxDecoration(
-              color: AppThemeConst.primaryColor,
-              borderRadius: BorderRadius.circular(4),
+              color: AppThemeConst.backgroundColor,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: AppThemeConst.primaryColor, width: 2),
             ),
-            child: Text(label, style: context.textTheme.body12),
+            alignment: Alignment.center,
+            child: SvgPicture.asset(icon, height: 40, width: 40),
           ),
-        ),
-      ],
+          Positioned(
+            top: -10,
+
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              decoration: BoxDecoration(
+                color: AppThemeConst.primaryColor,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text(label, style: context.textTheme.body12),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
