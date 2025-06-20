@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
             ),
         '/generate_code': (context) {
           final args = ModalRoute.of(context)?.settings.arguments;
-          ScanType scanType = ScanType.text; // default
+          ScanType scanType = ScanType.text; 
           if (args is Map && args['scanType'] is ScanType) {
             scanType = args['scanType'] as ScanType;
           }
