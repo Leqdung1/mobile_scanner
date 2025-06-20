@@ -26,7 +26,7 @@ class ScanQrScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 50),
               const ScanAppBar(),
-              const SizedBox(height: 500),
+              const SizedBox(height: 520),
               const ScanSlider(),
             ],
           ),

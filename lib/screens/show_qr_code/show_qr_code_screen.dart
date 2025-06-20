@@ -8,7 +8,7 @@ import 'package:qr_scanner/widgets/background_widget.dart';
 
 class ShowQrCodeScreen extends StatelessWidget {
   const ShowQrCodeScreen({super.key, required this.text});
-
+  
   final String text;
 
   @override

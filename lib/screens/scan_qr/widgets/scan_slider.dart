@@ -6,36 +6,39 @@ class ScanSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.remove, color: AppThemeConst.textColor),
-        ),
-        Expanded(
-          child: SliderTheme(
-            data: SliderTheme.of(context).copyWith(
-              trackHeight: 3,
-              trackShape: const RectangularSliderTrackShape(),
-              overlayShape: SliderComponentShape.noOverlay,
-              activeTrackColor: AppThemeConst.primaryColor,
-              inactiveTrackColor: AppThemeConst.textColor,
-              thumbShape: const CustomThumbShape(thumbRadius: 10),
-            ),
-            child: Slider(
-              value: 0.5,
-              min: 0,
-              max: 1,
-              label: '${(0.5 * 100).round()}',
-              onChanged: (value) {},
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.remove, color: AppThemeConst.textColor),
+          ),
+          Expanded(
+            child: SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                trackHeight: 3,
+                trackShape: const RectangularSliderTrackShape(),
+                overlayShape: SliderComponentShape.noOverlay,
+                activeTrackColor: AppThemeConst.primaryColor,
+                inactiveTrackColor: AppThemeConst.textColor,
+                thumbShape: const CustomThumbShape(thumbRadius: 10),
+              ),
+              child: Slider(
+                value: 0.5,
+                min: 0,
+                max: 1,
+                label: '${(0.5 * 100).round()}',
+                onChanged: (value) {},
+              ),
             ),
           ),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.add, color: AppThemeConst.textColor),
-        ),
-      ],
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add, color: AppThemeConst.textColor),
+          ),
+        ],
+      ),
     );
   }
 }

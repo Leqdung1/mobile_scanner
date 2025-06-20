@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:qr_scanner/core/constants/app_theme_const.dart';
 import 'package:qr_scanner/core/constants/asset_path_const.dart';
 
@@ -25,7 +26,21 @@ class ScanAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildItem(AssetPathConst.icGallery, context, () {}),
+          _buildItem(AssetPathConst.icGallery, context, () async {
+            final XFile? image = await ImagePicker().pickImage(
+              source: ImageSource.gallery,
+            );
+            if (image != null) {
+              Navigator.pushNamed(
+                context,
+                '/show_qr_code',
+                arguments:
+                    image
+                        .path,
+              );
+            }
+          }),
+
           _buildItem(AssetPathConst.icFlash, context, () {}),
           _buildItem(AssetPathConst.icCamera, context, () {}),
         ],
